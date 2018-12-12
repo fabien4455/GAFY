@@ -9,15 +9,12 @@ public class Compte {
 	}
 	
 	public void depotDe(int pDepot) {
-		
 	}
 	
 	public void retraitDe(int pRetrait) {
-		
 	}
 	
 	public int getSolde() {
-		
 		return 1;
 	}
 	
