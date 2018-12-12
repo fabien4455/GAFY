@@ -4,6 +4,10 @@ public class Compte {
 	
 	public int solde;
 	
+	public Compte(int pSolde) {
+		this.solde = pSolde;
+	}
+	
 	public void depotDe() {
 		
 	}
