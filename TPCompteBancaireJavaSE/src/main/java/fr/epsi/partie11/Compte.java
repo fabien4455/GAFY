@@ -8,11 +8,11 @@ public class Compte {
 		this.solde = pSolde;
 	}
 	
-	public void depotDe() {
+	public void depotDe(int pDepot) {
 		
 	}
 	
-	public void retraitDe() {
+	public void retraitDe(int pRetrait) {
 		
 	}
 	
