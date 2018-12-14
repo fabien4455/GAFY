@@ -1,15 +1,19 @@
-package fr.epsi.partie14;
+package fr.epsi.partie21;
 
 public class Compte {
 
-	private int sommeDepots;
-	private int sommeRetraits;
+	private int[] iDepots;
+	private int[] iRetraits;
+	private int depots;
+	private int retraits;
 	private int decouvert;
 	
 	public Compte() {
-		this.sommeDepots = 0;
-		this.sommeRetraits = 0;
+		this.depots = 0;
+		this.retraits = 0;
 		this.decouvert = 0;
+		this.iDepots = new int[10];
+		this.iRetraits = new int[10];
 	}
 	
 	public Compte(int pDecouvert) {
@@ -18,28 +22,28 @@ public class Compte {
 	}
 	
 	public void depotDe(int pDepot) {
-		this.sommeDepots += pDepot;		
+		this.depots += pDepot;		
 	}
 	
 	public void retraitDe(int pRetrait) {
 		if(verifDecouvert(pRetrait) == true) {
 			System.out.println("Retrait Effectué");
-			this.sommeRetraits += pRetrait;				
+			this.retraits += pRetrait;				
 		}else {
 			System.out.println("Retrait Impossible");			
 		}
 	}
 	
 	public int getSolde() {
-		return this.sommeDepots - this.sommeRetraits;
+		return this.depots - this.retraits;
 	} 
 	
 	public int getSommeDepots() {
-		return this.sommeDepots;
+		return this.depots;
 	}
 	
 	public int getSommeRetrait() {
-		return this.sommeRetraits;
+		return this.retraits;
 	}
 	
 	public int getDecouvert() {

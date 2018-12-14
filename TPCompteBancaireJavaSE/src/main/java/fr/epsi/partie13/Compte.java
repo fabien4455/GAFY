@@ -19,7 +19,7 @@ public class Compte {
 	}
 	
 	public int getSolde() {
-		return this.sommeDepots - this.sommeRetraits;
+		return getSommeDepots() - getSommeRetrait();
 	} 
 	
 	public int getSommeDepots() {
