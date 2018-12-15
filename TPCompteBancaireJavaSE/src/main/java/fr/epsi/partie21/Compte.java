@@ -7,6 +7,8 @@ public class Compte {
 	private int depots;
 	private int retraits;
 	private int decouvert;
+	private int i = 0;
+	private int j = 0;
 	
 	public Compte() {
 		this.depots = 0;
@@ -22,27 +24,47 @@ public class Compte {
 	}
 	
 	public void depotDe(int pDepot) {
-		this.depots += pDepot;		
+		if(i < 10) {
+			iDepots[i] = pDepot;
+			i++;
+		}
 	}
 	
 	public void retraitDe(int pRetrait) {
-		if(verifDecouvert(pRetrait) == true) {
-			System.out.println("Retrait Effectué");
-			this.retraits += pRetrait;				
-		}else {
-			System.out.println("Retrait Impossible");			
+		if(j < 10) {
+			
+			if(verifDecouvert(pRetrait) == true) {
+				System.out.println("Retrait Effectué");
+				iRetraits[j] = pRetrait;				
+			}else {
+				System.out.println("Retrait Impossible");			
+			}
+			
+			j++;
 		}
 	}
 	
 	public int getSolde() {
-		return this.depots - this.retraits;
+		return this.getSommeDepots() - this.getSommeRetrait();
 	} 
 	
 	public int getSommeDepots() {
+		this.depots = 0;
+		
+		for(int k = 0; k < iDepots.length; k++) {
+			this.depots = this.depots + iDepots[k];
+		}
+		
 		return this.depots;
 	}
 	
 	public int getSommeRetrait() {
+		this.retraits = 0;
+		
+		for(int k = 0; k < iRetraits.length; k++) {
+			this.retraits = this.retraits + iRetraits[k];
+		}
+		
 		return this.retraits;
 	}
 	

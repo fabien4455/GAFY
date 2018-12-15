@@ -1,15 +1,21 @@
-package fr.epsi.partie14;
+package fr.epsi.partie31;
+
+import java.util.ArrayList;
 
 public class Compte {
 
-	private int sommeDepots;
-	private int sommeRetraits;
+	private int depots;
+	private int retraits;
 	private int decouvert;
+	private ArrayList<Integer> tabDepot;
+	private ArrayList<Integer> tabRetrait;
 	
 	public Compte() {
-		this.sommeDepots = 0;
-		this.sommeRetraits = 0;
+		this.depots = 0;
+		this.retraits = 0;
 		this.decouvert = 0;
+		tabDepot = new ArrayList<Integer>();
+		tabRetrait = new ArrayList<Integer>();
 	}
 	
 	public Compte(int pDecouvert) {
@@ -18,13 +24,13 @@ public class Compte {
 	}
 	
 	public void depotDe(int pDepot) {
-		this.sommeDepots += pDepot;		
+		this.tabDepot.add(pDepot);
 	}
 	
 	public void retraitDe(int pRetrait) {
 		if(verifDecouvert(pRetrait) == true) {
 			System.out.println("Retrait Effectué");
-			this.sommeRetraits += pRetrait;				
+			this.tabRetrait.add(pRetrait);				
 		}else {
 			System.out.println("Retrait Impossible");			
 		}
@@ -35,11 +41,23 @@ public class Compte {
 	} 
 	
 	public int getSommeDepots() {
-		return this.sommeDepots;
+		this.depots = 0;
+		
+		for(int k = 0; k < tabDepot.size(); k++) {
+			this.depots = this.depots + tabDepot.get(k);
+		}
+		
+		return this.depots;
 	}
 	
 	public int getSommeRetrait() {
-		return this.sommeRetraits;
+		this.retraits = 0;
+		
+		for(int k = 0; k < tabRetrait.size(); k++) {
+			this.retraits = this.retraits + tabRetrait.get(k);
+		}
+		
+		return this.retraits;
 	}
 	
 	public int getDecouvert() {
@@ -62,4 +80,3 @@ public class Compte {
 	}
 	
 }
-
