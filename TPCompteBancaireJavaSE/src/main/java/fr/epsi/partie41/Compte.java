@@ -1,5 +1,6 @@
-package fr.epsi.partie31;
+package fr.epsi.partie41;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Compte {
@@ -7,15 +8,13 @@ public class Compte {
 	private int depots;
 	private int retraits;
 	private int decouvert;
-	private ArrayList<Integer> tabDepot;
-	private ArrayList<Integer> tabRetrait;
+	private ArrayList<Mouvement> tabMouvement;
 	
 	public Compte() {
 		this.depots = 0;
 		this.retraits = 0;
 		this.decouvert = 0;
-		this.tabDepot = new ArrayList<Integer>();
-		this.tabRetrait = new ArrayList<Integer>();
+		this.tabMouvement = new ArrayList<Mouvement>();
 	}
 	
 	public Compte(int pDecouvert) {
@@ -23,14 +22,16 @@ public class Compte {
 		this.decouvert = pDecouvert;
 	}
 	
-	public void depotDe(int pDepot) {
-		this.tabDepot.add(pDepot);
+	public void depotDe(int pMontantDepot, LocalDate pDateDepot, String pType) {
+		Mouvement mouv = new Mouvement(pMontantDepot, pDateDepot, pType);
+		this.tabMouvement.add(mouv);
 	}
 	
-	public void retraitDe(int pRetrait) {
-		if(verifDecouvert(pRetrait) == true) {
+	public void retraitDe(int pMontantRetrait, LocalDate pDateRetrait, String pType) {
+		if(verifDecouvert(pMontantRetrait) == true) {
+			Mouvement mouv = new Mouvement(pMontantRetrait, pDateRetrait, pType);
 			System.out.println("Retrait Effectué");
-			this.tabRetrait.add(pRetrait);				
+			this.tabMouvement.add(mouv);				
 		}else {
 			System.out.println("Retrait Impossible");			
 		}
@@ -43,8 +44,10 @@ public class Compte {
 	public int getSommeDepots() {
 		this.depots = 0;
 		
-		for(int k = 0; k < tabDepot.size(); k++) {
-			this.depots = this.depots + tabDepot.get(k);
+		for(int k = 0; k < tabMouvement.size(); k++) {
+			if(tabMouvement.get(k).getTypeMvt().equals("depot")) {
+				this.depots = this.depots + tabMouvement.get(k).getMontant();
+			}
 		}
 		
 		return this.depots;
@@ -53,8 +56,10 @@ public class Compte {
 	public int getSommeRetrait() {
 		this.retraits = 0;
 		
-		for(int k = 0; k < tabRetrait.size(); k++) {
-			this.retraits = this.retraits + tabRetrait.get(k);
+		for(int k = 0; k < tabMouvement.size(); k++) {
+			if(tabMouvement.get(k).getTypeMvt().equals("retrait")) {
+				this.retraits = this.retraits + tabMouvement.get(k).getMontant();
+			}
 		}
 		
 		return this.retraits;
