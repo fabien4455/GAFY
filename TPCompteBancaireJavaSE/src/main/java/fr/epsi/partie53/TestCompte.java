@@ -1,4 +1,4 @@
-package fr.epsi.partie52;
+package fr.epsi.partie53;
 
 import java.time.LocalDate;
 
@@ -22,8 +22,6 @@ public class TestCompte {
         compte1.retraitDe( 3000,LocalDate.of(2018, 12, 21));
         System.out.println( "Le solde est de : " + compte1.getSolde());
 
-        compte1.historiqueTransection();
-        
     }
 
 }

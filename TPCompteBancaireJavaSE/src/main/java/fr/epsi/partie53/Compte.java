@@ -1,4 +1,4 @@
-package fr.epsi.partie52;
+package fr.epsi.partie53;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -84,12 +84,6 @@ public class Compte {
 	
 	public String toString() {
 		return "Le solde est de : " + getSolde() + " euros";
-	}
-	
-	public void historiqueTransection() {
-		for(int i = 0; i < historique.size(); i++) {
-			System.out.println(historique.get(i).toString());
-		}
 	}
 	
 }
