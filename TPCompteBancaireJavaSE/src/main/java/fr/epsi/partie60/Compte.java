@@ -1,4 +1,4 @@
-package fr.epsi.partie52;
+package fr.epsi.partie60;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -28,14 +28,15 @@ public class Compte {
 		System.out.println(mouv.toString());
 	}
 	
-	public void retraitDe(int pMontantRetrait, LocalDate pDateRetrait) {
+	public void retraitDe(int pMontantRetrait, LocalDate pDateRetrait) throws CompteException {
 		if(verifDecouvert(pMontantRetrait) == true) {
 			Retraits mouv = new Retraits(pMontantRetrait, pDateRetrait);
 			System.out.println("Retrait Effectué");
 			this.historique.add(mouv);
 			System.out.println(mouv.toString());
 		}else {
-			System.out.println("Retrait Impossible");			
+			System.out.println("Retrait Impossible");
+			throw new CompteException();
 		}
 	}
 	
@@ -84,6 +85,12 @@ public class Compte {
 	
 	public String toString() {
 		return "Le solde est de : " + getSolde() + " euros";
+	}
+	
+	public void historiqueTransection() {
+		for(int i = 0; i < historique.size(); i++) {
+			System.out.println(historique.get(i).toString());
+		}
 	}
 	
 }

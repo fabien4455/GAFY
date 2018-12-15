@@ -86,4 +86,10 @@ public class Compte {
 		return "Le solde est de : " + getSolde() + " euros";
 	}
 	
+	public void historiqueTransection() {
+		for(int i = 0; i < historique.size(); i++) {
+			System.out.println(historique.get(i).toString());
+		}
+	}
+	
 }
