@@ -3,7 +3,7 @@ package fr.epsi.partie12;
 public class TestCompte {
 
     public static void main( String[] args ) {
-    	Compte compte1 = new Compte(0);
+    	Compte compte1 = new Compte();
         
         compte1.depotDe( 200);
         System.out.println( "Le solde est de : " + compte1.getSolde());
